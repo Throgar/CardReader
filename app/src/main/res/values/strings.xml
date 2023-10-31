@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CardReader</string>
+    <string name="aidGroupDesc">File for proprietary chosen AID group</string>
+</resources>
