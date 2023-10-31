@@ -4,27 +4,16 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.SharedPreferences
-import android.nfc.NdefMessage
 import android.nfc.NfcAdapter
 import android.nfc.NfcAdapter.EXTRA_ID
 import android.nfc.NfcAdapter.EXTRA_TAG
 import android.nfc.Tag
-import android.nfc.tech.IsoDep
-import android.nfc.tech.Ndef
-import android.nfc.tech.NdefFormatable
 import android.nfc.tech.NfcA
-import android.nfc.tech.NfcB
-import android.nfc.tech.NfcF
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
-import java.io.IOException
-import java.nio.charset.StandardCharsets
-import kotlin.math.E
 
 
 class MainActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
@@ -80,15 +69,16 @@ class MainActivity : AppCompatActivity(), NfcAdapter.ReaderCallback {
                 putString("uid", uid)
             }.apply()
 
-            //TODO: Savenut tento serial number a vytvorit simulaciu tejto karty pre terminal
+            //TODO: Save serial number and make service to simulate this card
             Log.i("DRAGON", "uid: $uid")
             cardTextView.text = "Serial Number: \n$uid"
             Toast.makeText(this, "Serial Number: $uid", Toast.LENGTH_LONG).show()
         }
     }
+
     // Helper function to convert bytes to a hexadecimal string
     private fun bytesToHex(bytes: ByteArray?): String {
-        if(bytes == null) return "Couldn't read serial number from card"
+        if (bytes == null) return "Couldn't read serial number from card"
         val hexChars = CharArray(bytes.size * 2)
         for (i in bytes.indices) {
             val v = bytes[i].toInt() and 0xFF

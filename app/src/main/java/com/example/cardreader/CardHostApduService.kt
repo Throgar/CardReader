@@ -1,12 +1,10 @@
 package com.example.cardreader
 
-import android.content.Intent
 import android.nfc.Tag
 import android.nfc.cardemulation.HostApduService
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.google.gson.Gson
 
 class CardHostApduService: HostApduService() {
 
